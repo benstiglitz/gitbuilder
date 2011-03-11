@@ -16,7 +16,7 @@ git show-ref -d |
 	grep -v ' refs/heads/' |
 	grep -v '/HEAD$' |
 	sed -e 's, [^/]*/[^/]*/, ,' -e 's,\^{},,' |
-	tac |
+	../reverse.sh |
 	while read commit branch; do
 		pb="$lb"
 		lb="$branch"
@@ -26,4 +26,4 @@ git show-ref -d |
 		[ -n "$VERBOSE" ] && echo -n "$commit "
 		echo "$branch"
 	done |
-	tac
+	../reverse.sh
